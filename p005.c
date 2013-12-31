@@ -15,20 +15,17 @@ int divides_all(n, max_div) {
 		} 
 	}
 	return 1;
-
 }
 
 int main(char *args[]) {
-	int test = 11;
+	int test = 10;
 	int i = 0;
 	while(1) {
 		if (divides_all(test, MAX_DIVISOR)) { 
 			printf("%d succeeded!\n", test);
 			exit(0);
 		} else {
-			test++;
+			test += 2;
 		}
-		
 	}	
-	
 }
