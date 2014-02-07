@@ -201,7 +201,19 @@ def srotate(n):
         s = t
     return rotations
 
+def factorial(n):
+    assert n >= 0
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+
 if __name__ == "__main__":
     print srotate(1)
     print srotate(10)
     print srotate (413)
+
+    print factorial(0)
+    print factorial(1)
+    print factorial(23)
+
