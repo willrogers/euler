@@ -15,7 +15,10 @@ char * read_file(char * path, int *  return_array) {
 	/* Read the file into the array. */
 	while ((c = fgetc(f)) != EOF) { 
 		if (c != '\n') { 
-			return_array[i / LENGTH][i % LENGTH] = atoi(&c);
+			*return_array = atoi(&c);
+			printf("array %d is %d\n", i, atoi(&c));
+			return_array++;
+			
 			i++;
 		} else {
 			printf("\n");
@@ -32,8 +35,16 @@ int main() {
 
 
 	read_file(FILEPATH, &tries[0][0]);
+	int i, j;
+	for (i = 0; i < LINES; i++) {
+		for (j = 0; j < LENGTH; j++) { 
+			printf("%d", tries[i][j]);
+		}
+		printf("\n");
+	}
 	
-	printf("The last number is %d\n", tries[LINES][LENGTH]);
+	printf("The first number is %d\n", tries[0][0]);
+	printf("The last number is %d\n", tries[LINES-1][LENGTH-1]);
 
 	printf("Finished.\n");
 }
