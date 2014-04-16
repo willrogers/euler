@@ -1,3 +1,6 @@
+/* 
+   On Ubuntu, to include math.h you have to add -lm to gcc.
+ */
 #include <stdio.h>
 #include <math.h>
 

@@ -56,6 +56,7 @@ int main () {
 //		printf("%d %d %d\n", x, y, z);
 		if (x + y + z == 1000) {
 			printf("  success! %d %d %d\n", x, y, z);
+			printf("The product is %d\n", x * y * z);
 		}
 	}
 	return 0;
