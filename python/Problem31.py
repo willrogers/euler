@@ -1,5 +1,5 @@
 '''
-Find all the ways you can make up £2 in British currency.
+Find all the ways you can make up 2 pounds in British currency.
 '''
 
 LIMIT = 200
