@@ -208,6 +208,31 @@ def factorial(n):
     else:
         return n * factorial(n-1)
 
+
+def is_bouncy(n):
+    '''
+    See 112 and 113.
+    '''
+    not_forward = False
+    not_back = False
+    last = 0
+    for i in str(n):
+        if int(i) >= last:
+            last = int(i)
+        else:
+            not_forward = True
+            break
+
+    last = 0
+    for i in reversed(str(n)):
+        if int(i) >= last:
+            last = int(i)
+        else:
+            not_back = True
+            break
+
+    return not_forward and not_back
+
 if __name__ == "__main__":
     print srotate(1)
     print srotate(10)
