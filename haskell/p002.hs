@@ -7,7 +7,7 @@ fib 1 = 1
 fib 2 = 1
 fib x = fib (x-1) + fib (x-2)
 
-
+-- very inefficient since it keeps recalculating fib numbers
 sumfib count limit tot = let fc = fib count in 
                          if (fc > limit) 
                          then tot
@@ -16,6 +16,7 @@ sumfib count limit tot = let fc = fib count in
                             then tot + fc +  sumfib (count + 1) limit tot 
                             else tot + sumfib (count + 1) limit tot
 
-sumfib' count limit = sumfib count limit 0
+-- start from 2nd fib number, total starts from 0
+sumfib' limit = sumfib 2 limit 0
 
-main = print (sumfib' 2 limit)
+main = print (sumfib' limit)
