@@ -7,12 +7,14 @@ fib 1 = 1
 fib 2 = 1
 fib x = fib (x-1) + fib (x-2)
 
--- fibs = [ fib x | x <- [1..], fib x < limit ] 
 
--- fibs2 = [ x | x <- fibs, x < limit]
-
-sumfib count limit tot = if (fib count > limit) then tot
-                   else if even(fib count) then tot + fib count +  sumfib (count + 1) limit tot else tot + sumfib (count + 1) limit tot
+sumfib count limit tot = let fc = fib count in 
+                         if (fc > limit) 
+                         then tot
+                         else 
+                            if even fc 
+                            then tot + fc +  sumfib (count + 1) limit tot 
+                            else tot + sumfib (count + 1) limit tot
 
 sumfib' count limit = sumfib count limit 0
 
