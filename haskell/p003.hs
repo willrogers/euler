@@ -1,7 +1,6 @@
 
 target = 600851475143
 
-
 prime :: Int -> Bool
 prime 1 = False
 prime 2 = True
@@ -10,6 +9,7 @@ prime n = let x = truncate (sqrt (fromIntegral n::Double)) in
             all (\z-> n `mod` z /= 0) [x, x-1..2]
 
 -- this works but it's too slow
+-- schoolboy error: trying high numbers first
 factor :: Integral a => a -> [a] -> a -> [a]
 factor 1 factors _ = factors
 factor 2 factors _ = 2:factors
@@ -19,17 +19,24 @@ factor n factors count = if n `mod` count == 0
                          else factor n factors (count - 1)
                          where d = n `div` count
 
+-- simplify function to make it more user-friendly
 factor' n = factor n [] (n `div` 2)
 
-main = do print (prime 2)
-          print (prime 3)
-          print (prime 4)
-          print (prime 5)
-          print (prime 104)
-          print (factor' 2)
-          print (factor' 103)
-          print (factor' 4)
-          print (factor' 8)
-          print (factor' 21)
-          print (factor' target)
+
+-- count from 2 to n/2; could still be more efficient
+factor2 :: Int -> [Int] -> Int -> [Int]
+factor2 1 factors _ = factors
+factor2 2 factors _ = 2:factors
+factor2 n factors count 
+                    | (fromIntegral count :: Double) > ((fromIntegral n :: Double) / 2) = n:factors -- prime so add to the list
+                    | (n `mod` count == 0) = factor2 d (count:factors) 2
+                    | otherwise = factor2 n factors (count + 1)
+                    where d = n `div` count
+
+-- simplify function to make it more user-friendly
+factor2' :: Int -> [Int]
+factor2' n = factor2 n [] 2
+
+
+main = do print (factor2' target)
 
