@@ -1,12 +1,6 @@
 
 target = 600851475143
 
-prime :: Int -> Bool
-prime 1 = False
-prime 2 = True
--- use fromIntegral to ensure that the input to sqrt is consistent
-prime n = let x = truncate (sqrt (fromIntegral n::Double)) in
-            all (\z-> n `mod` z /= 0) [x, x-1..2]
 
 -- this works but it's too slow
 -- schoolboy error: trying high numbers first

@@ -1,5 +1,5 @@
 
-
+-- True if all numbers up to n divide x
 divall :: Int -> Int -> Bool
 divall x 1 = True
 divall x n 
