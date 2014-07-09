@@ -13,6 +13,5 @@ int main(char* args[]) {
 		sum += i;
 		sum_squares += i*i;
 	}
-	printf("Sum is %d\n", sum);
 	printf("Answer: %d\n", (sum*sum - sum_squares));
 }

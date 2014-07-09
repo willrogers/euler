@@ -3,9 +3,7 @@
 #include "utils.c"
 #include <stdio.h>
 
-//#define UPPER 13195
 #define UPPER 600851475143
-
 
 int main() {
 
@@ -31,11 +29,16 @@ int main() {
         j++;
     } 
 
+    int max = 0;
     int k = 0;
+    int next = 0;
     for (k; k < no_factors; k++) {
-        if (factors[k] == 0) {
+        next = factors[k];
+        if (next == 0) {
             break;
+        } else if (next > max) {
+            max = next;
         }
-        printf("Item %d is %d\n", k, factors[k]);
     }
+    printf("The biggest prime factor is %d\n", max);
 }
