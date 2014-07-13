@@ -4,32 +4,11 @@
    construct divisors from the factors.
 */
 
+#include "utils.c"
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
 #define MAX_FACTORS 100000
-
-/* pass in a pointer to an array. Assume that there is enough
-   room in the array!
-   Return the number of factors added to the array.
-*/
-int factorise(int n, int *factors) {
-	int fcount = 0;
-	int i = 2;
-	while (n > 1) {
-		if ((n % i) == 0) {
-			*factors = i;		
-			n = n / i;
-			i = 2;
-			factors++;
-			fcount++;
-		}
-		else {
-			i++;
-		}
-	}
-	return fcount;
-}
 
 
 /* indices is the array of indices used to pick combinations:
@@ -81,20 +60,6 @@ void combinations(int *input_array, int length, int selection, int *result_array
 	} while (update_indices(indices, length, selection));
 	
 	free(indices);
-}
-
-/* ints overflow at 13! */
-long factorial(int n) {
-	if (n == 0) {
-		return 1;
-	} else {
-		int i = 0;
-		long total = 1;
-		for (i = n; i > 1; i--) {
-			total *= i;	
-		} 
-		return total;
-	}
 }
 
 long ncr(int n, int r) {
