@@ -14,6 +14,4 @@ mindivall x n = if divall x n then x
 mindivall' :: Int -> Int
 mindivall' x = mindivall 1 x
 
-main = do print (divall 10 2)
-          print (divall 10 3)
-          print (mindivall' 10)
+main = do print (mindivall' 20)

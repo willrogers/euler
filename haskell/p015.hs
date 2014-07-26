@@ -1,5 +1,5 @@
 -- too slow!
-gridSize = 20
+gridSize = 12
 
 paths x y size
     | x == size = 1
