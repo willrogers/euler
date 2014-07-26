@@ -5,17 +5,15 @@ no = 731671765313306249192251196744265747423553491949349698352031277450632623957
 
 
 no_str = str(no)
-max = 0
-
-
+biggest = 0
+consecutive = 13
 
 for i in range(len(no_str)):
     try:
-        prod = int(no_str[i]) * int(no_str[i+1]) * int(no_str[i+2]) \
-            * int(no_str[i+3]) * int(no_str[i+4])             
-    except: # index out of range - we've reached the end
+        prod = reduce(lambda x,y: x*y, (int(j) for j in no_str[i:i+13]))
+    except IndexError: # index out of range - we've reached the end
         break
-    if prod > max:
-        max = prod 
+    if prod > biggest:
+        biggest = prod 
 
-print max
+print biggest
