@@ -1,6 +1,5 @@
 module Utils where
 
-
 -- count from 2 to n/2; could still be more efficient
 factor' :: Integer -> [Integer] -> Integer -> [Integer]
 factor' 1 factors _ = factors
@@ -43,3 +42,10 @@ sumdig' n count
 
 sumdig :: Integer -> Integer
 sumdig n = sumdig' n 0
+
+prime :: Int -> Bool
+prime 1 = False
+prime 2 = True
+-- use fromIntegral to ensure that the input to sqrt is consistent
+prime n = let x = truncate (sqrt (fromIntegral n::Double)) in
+            all (\z-> n `mod` z /= 0) [2,3..x]
