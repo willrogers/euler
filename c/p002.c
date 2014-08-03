@@ -14,7 +14,6 @@ int main() {
     int total = 0;
 
     while (a < LIMIT) {
-        printf("a is %d\n", a);
         next = a + b;
         a = b;
         b = next;
@@ -23,6 +22,6 @@ int main() {
         }
     }   
 
-    printf("The total is %d\n", total);
-        
+    printf("%d\n", total);
+    return 0;
 }

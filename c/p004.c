@@ -42,13 +42,6 @@ int is_palindrome(int n) {
 }
 
 int main (int argc, char *argv[]) { 
-	int n = 1234;
-	
-	printf("%d palindromic: %d\n", n, is_palindrome(n));
-	n = 0;
-	printf("%d palindromic: %d\n", n, is_palindrome(n));
-	n = 1111;
-	printf("%d palindromic: %d\n", n, is_palindrome(n));
 
 	int max_pal = 0;
 
@@ -58,13 +51,12 @@ int main (int argc, char *argv[]) {
 		for (j = 0; j < MAX_INPUT; j++) {
 			int x = i * j;
 			if (is_palindrome(x)) {
-				printf("%d * %d = %d is palindromic\n", i,j,x);
 				if (x > max_pal) {
 					max_pal = x;
 				}
 			}
 		}
 	}
-	printf("The biggest palindrome is %d\n", max_pal);
+	printf("%d\n", max_pal);
 	return 0;
 }

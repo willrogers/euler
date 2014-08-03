@@ -6,7 +6,6 @@
 #define PRIMES 10001
 
 int main(char * args[]) {
-	printf("3 is prime: %d\n", is_prime(3));
 	int primes[PRIMES] = {0};
 	int test = 0;
 	int i = 0;
@@ -19,8 +18,7 @@ int main(char * args[]) {
 	}	
 
 
-	for (i =0; i < PRIMES; i++) {
-		printf("prime %d: %d\n", i+1, primes[i]);
-	}
+	printf("%d\n", primes[PRIMES]);
+	return 0;
 }
 
