@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROBLEMS=001
+PROBLEMS=030
 LOG=compile.log
 rm $LOG
 
@@ -17,7 +17,7 @@ function compile_python {
 }
 
 function run_python {
-	python $PDIR/p$1.py 2>> $LOG
+	python3 $PDIR/p$1.py 2>> $LOG
 }
 
 function compile_haskell {
