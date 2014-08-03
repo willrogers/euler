@@ -11,6 +11,6 @@ def square_sum(n):
         total += i
     return total * total
 
-print square_sum(100) - sum_squares(100) 
+print(square_sum(100) - sum_squares(100)) 
 
 

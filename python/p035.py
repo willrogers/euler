@@ -30,5 +30,5 @@ for prime in primes:
     if cp:
         cps.append(prime)    
 
-print cps
-print len(cps)
+print(cps)
+print(len(cps))

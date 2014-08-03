@@ -28,6 +28,6 @@ for i in range(1, SIZE):
         l[i][j] = l[i-1][j] + l[i][j-1]
 
 
-print l[20][20]
+print(l[20][20])
 
 

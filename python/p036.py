@@ -15,9 +15,9 @@ for i in range(LIMIT):
         bins =  bin(i)
         # remove '0b' from the string
         if is_palindrome(bins[2:]):
-            print i
-            print bins
+            print(i)
+            print(bins)
             total += i
 
-print total
+print(total)
 

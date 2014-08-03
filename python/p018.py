@@ -61,7 +61,8 @@ routes = get_routes(HEIGHT)
 vals = []
 for route in routes:
     total = 0
-    for i,j in zip(route, range(HEIGHT)):  
+    for i,j in zip(route, list(range(HEIGHT))):  
             total += t[j][i]
     vals.append(total)
-print max(vals)
+
+print(max(vals))

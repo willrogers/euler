@@ -20,8 +20,8 @@ pan_primes = []
 while True:
     if is_pandigital(i):
         if is_prime(i):
-            print i, "is prime"
+            print(i, "is prime")
             exit()
     i -= 2
 
-print pan_primes
+print(pan_primes)

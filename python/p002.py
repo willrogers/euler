@@ -15,6 +15,6 @@ for item in l:
     if (item % 2 == 0):
         total += item
 
-print total
+print(total)
 
 

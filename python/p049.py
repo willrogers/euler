@@ -29,6 +29,6 @@ for p in PRIMES:
 
 for poss in POSSIBLES:
     if sorted(str(poss[0])) == sorted(str(poss[1])) == sorted(str(poss[2])):
-        print poss
+        print(poss)
 
 

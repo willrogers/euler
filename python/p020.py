@@ -14,4 +14,4 @@ def sum_digits(n):
         total += int(letter)
     return total
 
-print sum_digits(fact(100))
+print(sum_digits(fact(100)))

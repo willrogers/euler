@@ -57,4 +57,4 @@ for x in range(SEQ, DIMENSION - SEQ):
         score = max(w, nw, n, ne, e, se, s, sw)
         max_score = score if score > max_score else max_score
 
-print max_score
+print(max_score)

@@ -27,7 +27,7 @@ for i in range(LIMIT):
     if abundant(i):
         abuns.append(i)
 
-print len(abuns)
+print(len(abuns))
 
 combs = []
 # I think this is now the slow part.
@@ -38,10 +38,10 @@ for i in abuns:
         else:
             break
 
-print "size combs = ", len(combs)
+print("size combs = ", len(combs))
 scombs = set(combs)
 
-print "size scombs = ", len(scombs)
+print("size scombs = ", len(scombs))
 total = 0
 for i in range(LIMIT):
     if i not in combs:
@@ -50,4 +50,4 @@ for i in range(LIMIT):
 # Before, I checked every number by checking abuns twice.
 # This was slow.
 
-print total
+print(total)

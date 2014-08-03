@@ -22,10 +22,10 @@ def attempt(coins, target):
     ans = []
     go = []
     for coin in coins:
-        print "coin is", coin
+        print("coin is", coin)
         while sum(go) < target:
             go.append(coin)
-            print "go is", go
+            print("go is", go)
         if sum(go) == target:
             return go
         else:
@@ -36,4 +36,4 @@ def attempt(coins, target):
 
 
 answers = attempt(values, target)
-print answers
+print(answers)

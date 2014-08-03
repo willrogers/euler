@@ -24,4 +24,4 @@ for i in range(len(names)):
     #score = reduce( lambda x, y: values[x] + values[y], names[i] ) 
     total += score * (i + 1)
 
-print total
+print(total)

@@ -26,5 +26,5 @@ for power in itertools.count(1):
     if not found:
         break
 
-print len(RESULTS)
+print(len(RESULTS))
         

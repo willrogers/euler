@@ -12,4 +12,4 @@ for i in range(2, LIMIT):
     if powsum == i:
         total += powsum
 
-print total
+print(total)

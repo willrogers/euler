@@ -18,4 +18,4 @@ tot = 0
 for i in range(1, 1001):
     tot = tot + pow10to10(i, i)
 
-print tot 
+print(tot) 

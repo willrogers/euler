@@ -1,5 +1,6 @@
 import math
 import itertools
+from functools import reduce
 
 EPS = 0.00000001
 
@@ -234,11 +235,11 @@ def is_bouncy(n):
     return not_forward and not_back
 
 if __name__ == "__main__":
-    print srotate(1)
-    print srotate(10)
-    print srotate (413)
+    print(srotate(1))
+    print(srotate(10))
+    print(srotate (413))
 
-    print factorial(0)
-    print factorial(1)
-    print factorial(23)
+    print(factorial(0))
+    print(factorial(1))
+    print(factorial(23))
 

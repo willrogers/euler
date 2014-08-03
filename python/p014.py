@@ -47,6 +47,6 @@ def run():
         j = sreduce(i)
         if j > max[1]:
             max = (i,j)
-    print max[0]
+    print(max[0])
     
 run()

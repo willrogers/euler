@@ -26,7 +26,7 @@ def find_recurrence(d, leading_digits):
     try:
         s = str(d).split('.')[1]
     except IndexError: #integer
-        print d
+        print(d)
         return 0
     # recurrence in a decimal may not start with the leading digit
     tries = [s[i:] for i in range(leading_digits)]
@@ -47,7 +47,4 @@ for i in range(2, MAX_DIVISOR):
         max_recurrence = length
         value = i 
 
-print value
-    
-    
-
+print(value)

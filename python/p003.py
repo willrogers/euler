@@ -28,5 +28,6 @@ while True:
     if latest == 1:
         break
 
-print factors[-1]
+factors.reverse()
+print(factors[-1])
 

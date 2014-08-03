@@ -6,6 +6,7 @@ import sys
 
 TARGET = 10001
 
+
 count = 0
 no = 2
 

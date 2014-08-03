@@ -21,13 +21,13 @@ while len(s) < 10000000:
     s += str(i)
     i += 1
 
-print s[1]
-print s[2]
+print(s[1])
+print(s[2])
 
 tot = 1
 for i in range(7):
     tot *= int(s[1*10**i - 1])
 
-print tot 
+print(tot) 
 
 

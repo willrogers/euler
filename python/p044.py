@@ -42,12 +42,12 @@ if __name__ == "__main__":
                 if is_pen(pdiff):
                     pdiffpen = True
                 if psumpen and pdiffpen:
-                    print p, pdash, pdiff, psum
-                    print "Matched!!"
+                    print(p, pdash, pdiff, psum)
+                    print("Matched!!")
                 
         except IndexError:
             # done
             if step % 20 == 0:
-                print "done step %s" % step
+                print("done step %s" % step)
 
 

@@ -5,7 +5,7 @@
 from utils import is_prime
 import time
 import logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 
 
 class Hexagon(object):
@@ -18,7 +18,7 @@ class Hexagon(object):
         self.sides = {i:None for i in range(6)}
 
     def full(self):
-        return not any(item == None for item in self.sides.values())
+        return not any(item == None for item in list(self.sides.values()))
 
     def __repr__(self):
         out = 'Hex %s: ' % self.num
@@ -77,34 +77,34 @@ def loop(starth, loopno):
     """
     Complete one loop of the hexagon shape.
     """
-    if loopno == 1:
+    if loopno == 2:
         n = 1
     else:
-        n = (loopno - 1) * 6
-    #logging.info('looping ' +  str(starth))
+        n = (loopno - 2) * 6
+    logging.info('looping ' +  str(starth))
     innerh = starth
     # put the first hexagon on the top
     nexth = Hexagon.get_next()
     nexth.sides[3] = starth
     starth.sides[0] = nexth
-    #logging.debug('created' + str(nexth))
+    logging.debug('created' + str(nexth))
     for i in range(n):
-        #logging.info('about to finish' +  str(innerh))
+        logging.info('about to finish' +  str(innerh))
         finish(innerh)
-        #logging.info('finished' + str(innerh))
+        logging.info('finished' + str(innerh))
         innerh = Hexagon.hexagons[innerh.num + 1]
 
     # finish the loop
-    lasth = Hexagon.hexagons[nexth.num + loopno*6 - 1]
+    lasth = Hexagon.hexagons[nexth.num + n]
     nexth.sides[4] = lasth
     lasth.sides[1] = nexth
-    #logging.debug('attached %s to %s' % (nexth.num, lasth.num))
-    #logging.debug('done loop\n\n')
+    logging.debug('attached %s to %s' % (nexth.num, lasth.num))
+    logging.debug('done loop\n\n')
     
 
 def pd3(hexagon):
     tot = 0
-    for side in hexagon.sides.values():
+    for side in list(hexagon.sides.values()):
         if is_prime(abs(side.num - hexagon.num)):
             tot += 1
     return tot == 3
@@ -112,26 +112,30 @@ def pd3(hexagon):
         
 def main():
     t = time.time()
+    # create the first hexagon (loop 1)
     first = Hexagon.get_next()
-    loop(first, 1)
-    for i in range(10000):
-        loop(Hexagon.hexagons[(i * i * 3) + i * 3 + 2], i + 2)
+    # create the second loop
+    loop(first, 2)
+    # create the rest of the loops
+    for i in range(3, 100):
+        print((i * i * 3) + i * 3 - 1, i)
+        loop(Hexagon.hexagons[(i * i * 3) + i * 3 + 2], i)
 
     t = time.time() - t
-    print t
+    print(t)
     t = time.time()
 
     count = 0
-    for hexagon in Hexagon.hexagons.values():
+    for hexagon in list(Hexagon.hexagons.values()):
         try:
             if pd3(hexagon):
                 count += 1
-                print count, hexagon.num
+                print(count, hexagon.num)
         except AttributeError:
             pass
 
     t = time.time() - t
-    print t
+    print(t)
     t = time.time()
 
 if __name__ == '__main__':

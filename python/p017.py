@@ -73,4 +73,4 @@ for item in one_to_nine:
 thousand_len += len(one) + len(thousand)
 
 
-print thousand_len
+print(thousand_len)

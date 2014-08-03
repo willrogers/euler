@@ -10,9 +10,9 @@ for i in range(100):
         if (digsum > maximum):
             maximum = digsum        
 
-print maximum
+print(maximum)
 
 # or...
 maxsum = max([sum(int(c) for c in str(i**j)) for i in range(100) for j in range(100)])
 
-print maxsum
+print(maxsum)

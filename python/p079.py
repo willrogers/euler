@@ -10,7 +10,7 @@ with open(FILE) as f:
     for line in f:
         attempts.append(line.strip())
 
-print attempts
+print(attempts)
 #attempts = ['123', '234', '52']
 
 def valid_attempt(att, pwd):
@@ -45,9 +45,9 @@ while True:
 
     i += 1
 
-print "done"
-print i
+print("done")
+print(i)
     
-print valid_attempt('123', '1234')
-print valid_attempt('234', '1234')
+print(valid_attempt('123', '1234'))
+print(valid_attempt('234', '1234'))
     

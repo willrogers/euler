@@ -10,5 +10,5 @@ def sum_digits(n):
         total += int(letter)
     return total
 
-print sum_digits(pow(2, 1000))
+print(sum_digits(pow(2, 1000)))
 

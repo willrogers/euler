@@ -16,7 +16,7 @@ def show(attempt):
     '''
     for coin in REV_COINS:
         if attempt[coin] > 0:
-            print coin, attempt[coin]
+            print(coin, attempt[coin])
 
 def next_attempt(last_attempt):
     '''
@@ -28,7 +28,7 @@ def next_attempt(last_attempt):
     point is more difficult.
     '''
     
-    print "Start:"
+    print("Start:")
     show(last_attempt)
     start_from = 0
     for i, coin in enumerate(COINS):
@@ -37,10 +37,10 @@ def next_attempt(last_attempt):
             start_from = len(COINS) - i
             break
 
-    print "Rolled back to:"
+    print("Rolled back to:")
     show(last_attempt)
 
-    tot = sum(key * last_attempt[key] for key in last_attempt.keys())
+    tot = sum(key * last_attempt[key] for key in list(last_attempt.keys()))
         
     while tot < LIMIT:
         for coin in REV_COINS[start_from:]:
@@ -53,6 +53,6 @@ def next_attempt(last_attempt):
         
 for i in range(10):
     na = next_attempt(attempt)
-    print "Finish:"
+    print("Finish:")
     show(na)
 

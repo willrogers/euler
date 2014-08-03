@@ -18,11 +18,11 @@ for i in range(limit):
     sds[i] = sd
 
 
-for item in sds.keys():
+for item in list(sds.keys()):
     try:
         if sds[sds[item]] == item and item != sds[item]:
             aps.append(item)
     except KeyError: # The sum may be bigger than the numbers in the dict
         pass
 
-print sum(aps)
+print(sum(aps))

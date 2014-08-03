@@ -19,5 +19,5 @@ while(True):
         break
     latest += 1
 
-print latest * MAX_NO
+print(latest * MAX_NO)
 

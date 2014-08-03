@@ -26,4 +26,4 @@ for year in range(1901, 2001):
         if day == 0:
             no_suns += 1
 
-print no_suns
+print(no_suns)

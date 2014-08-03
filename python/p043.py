@@ -30,16 +30,16 @@ def sub_diff(num):
 
     return True
 
-print sub_diff(1406357289)
+print(sub_diff(1406357289))
 
 total = 0
 
 for item in itertools.permutations("1234567890", 10):
     test = int("".join(item))
     if sub_diff(test):
-        print test
+        print(test)
         total += test
 
-print total
+print(total)
         
         

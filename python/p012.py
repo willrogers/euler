@@ -17,7 +17,7 @@ while True:
     if len(d) > most:
         most = len(d)
     if len(d) > threshold:
-        print t
+        print(t)
         break
     else:
         i = i + 1

@@ -11,7 +11,7 @@ for i in range(26):
     # ascii values of A - Z 
     values[chr(i + 65)] = i + 1
 
-print values
+print(values)
 
 content = from_file("data/words.txt")
 content = content.strip()
@@ -26,8 +26,8 @@ for word in words:
     if is_triangle(score):
         tris += 1
 
-print "Number of words: ", len(words)
-print "Number of triangle words: ", tris
+print("Number of words: ", len(words))
+print("Number of triangle words: ", tris)
 
 
 

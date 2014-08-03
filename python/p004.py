@@ -21,5 +21,5 @@ products.reverse()
 # Check for the first palindrome.
 for item in products:
     if is_palindrome(item):
-        print item
+        print(item)
         break

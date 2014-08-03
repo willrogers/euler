@@ -1,3 +1,4 @@
+from functools import reduce
 # Find the greatest product of 5 consecutive digits in this number:
 # http://projecteuler.net/problem=8
 
@@ -16,4 +17,4 @@ for i in range(len(no_str)):
     if prod > biggest:
         biggest = prod 
 
-print biggest
+print(biggest)

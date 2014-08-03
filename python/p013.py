@@ -1,6 +1,7 @@
 '''
 What are the first 1o digits of the sum of the following numbers?
 '''
+from functools import reduce
 
 numbers = """\
 37107287533902102798797998220837590246510135740250
@@ -108,4 +109,4 @@ nos = [ int(line) for line in numbers ]
 
 total =  reduce(lambda x,y: x+y, nos)
 # Print the first ten digits
-print str(total)[:10]
+print(str(total)[:10])

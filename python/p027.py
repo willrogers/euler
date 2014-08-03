@@ -27,4 +27,4 @@ for b in primes:
     for a in range(-999, 999, 2):
         gen_ps.append(get_no_primes(a, b))
 
-print max(gen_ps)
+print(max(gen_ps))

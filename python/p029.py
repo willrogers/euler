@@ -10,4 +10,4 @@ for a in range(2, UPPER):
 
 s = set(nums)
 
-print len(s) 
+print(len(s)) 

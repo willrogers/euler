@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 
 def sumTo(n):
     total = 0
@@ -8,4 +7,4 @@ def sumTo(n):
     return total
 
 
-print sumTo(1000)
+print((sumTo(1000)))

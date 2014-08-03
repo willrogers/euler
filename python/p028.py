@@ -53,6 +53,6 @@ for i in range(SIZE):
 
 diag -= 1
 
-print diag
+print(diag)
     
 

@@ -26,5 +26,5 @@ maxp = 0
 for key in tris2:
     if tris2[key] > maxp:
         maxp = tris2[key]
-        print key, tris2[key]
+        print(key, tris2[key])
 

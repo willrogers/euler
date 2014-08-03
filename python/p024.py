@@ -12,7 +12,7 @@ digits = [0,1,2,3,4,5,6,7,8,9]
 i = 1
 for i, item in enumerate(permutations(digits)):
     if i == N-1:
-        print "".join(str(x) for x in item)
+        print("".join(str(x) for x in item))
         break
 
 
