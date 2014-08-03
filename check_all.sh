@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROBLEMS=030
+PROBLEMS=001
 LOG=compile.log
 rm $LOG
 
@@ -29,8 +29,20 @@ function compile_haskell {
 	fi
 }
 
+function compile_c {
+	if [ -f $PDIR/p$1.c ] ; then
+		gcc -o $PDIR/p$1 $PDIR/p$1.c  -lm >> $LOG 2>&1
+		return $?
+	else
+		return 1
+	fi
+}
+function run_c {
+	$PDIR/p$1
+}
+
 function run_haskell {
-	haskell/p$1
+	$PDIR/p$1
 }
 
 
