@@ -24,10 +24,15 @@
 int update_indices(int *indices, int length, int selection) {
 	int i = 0;
 	int j = 0;
+	/* shift the right-hand number first, then move left */
 	for (i = selection - 1; i >= 0; i--) {
+		/* is the number the maximum for that position? */
 		if (indices[i] < length + i - selection) {
 			indices[i]++;
 			int x = indices[i];
+			/* if a number's been incremented, update those
+			   to the right
+			*/
 			for (j = i + 1; j < selection; j++) {
 				indices[j] = ++x;	
 			}
@@ -68,11 +73,9 @@ long ncr(int n, int r) {
 
 /* return the number of unique elements in the array */
 int unique_elements(int *array, int length) {
-	int *uniques = malloc(sizeof(int)*length);
+	/* calloc initialises with zeros */
+	int *uniques = calloc(length, sizeof(int));
 	int i = 0;
-	for (i = 0; i < length; i++) {
-		uniques[i] = 0;
-	}
 	int j = 0;
 	int next = 0;
 	int nextd = 0;
