@@ -16,9 +16,8 @@ while True:
     d.append(i) # divisors doesn't include number itself.
     if len(d) > most:
         most = len(d)
-        print i, t, most
     if len(d) > threshold:
-        print i, t, d
+        print t
         break
     else:
         i = i + 1

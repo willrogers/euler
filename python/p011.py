@@ -58,4 +58,3 @@ for x in range(SEQ, DIMENSION - SEQ):
         max_score = score if score > max_score else max_score
 
 print max_score
-print "done"

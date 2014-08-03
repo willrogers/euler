@@ -5,12 +5,6 @@
 
 from utils import is_palindrome
 
-
-to_test = [1, 5, 12, 15, 22, 2352, 2332, 45654]
-
-for item in to_test:
-    print "Item %s, palindromic: %s" % (item, is_palindrome(item))
-
 # Simple-minded: just get all the products of 3-digit integers.
 products = []
 

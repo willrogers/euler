@@ -40,7 +40,6 @@ def sreduce(n):
     l += 1
     return l
 
-print sreduce(13)
 
 def run():
     max = (0,0)
@@ -48,7 +47,6 @@ def run():
         j = sreduce(i)
         if j > max[1]:
             max = (i,j)
-    print max
+    print max[0]
     
-cProfile.run('run()')
-
+run()

@@ -1,7 +1,7 @@
 # Find the sum of the digits in 2^100.
 # Version 2: some tidying.
 
-from utilities import pow
+from utils import pow
 
 def sum_digits(n):
     total = 0

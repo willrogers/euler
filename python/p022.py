@@ -5,7 +5,7 @@ it by its position in the list to get an overall score.
 
 from utils import from_file
 
-content  = from_file("data/names.txt")
+content  = from_file("../data/names.txt")
 
 values = {}
 for i in range(26):
@@ -24,4 +24,4 @@ for i in range(len(names)):
     #score = reduce( lambda x, y: values[x] + values[y], names[i] ) 
     total += score * (i + 1)
 
-print "Total score: ", total
+print total

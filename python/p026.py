@@ -44,11 +44,9 @@ for i in range(2, MAX_DIVISOR):
     except IndexError: # integer
         pass
     if length > max_recurrence:
-        print i
         max_recurrence = length
         value = i 
 
-print max_recurrence
 print value
     
     

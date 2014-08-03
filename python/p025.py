@@ -17,5 +17,3 @@ while True:
         break
 
 print n
-print fibn
-print fibnp1

@@ -27,7 +27,6 @@ def is_pythagorean(triplet):
 
 for triplet in triplets:
     if is_pythagorean(triplet):
-        print triplet
         print triplet[0] * triplet[1] * triplet[2]
         break
 

@@ -25,5 +25,4 @@ for item in sds.keys():
     except KeyError: # The sum may be bigger than the numbers in the dict
         pass
 
-print aps
 print sum(aps)

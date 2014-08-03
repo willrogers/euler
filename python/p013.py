@@ -106,11 +106,6 @@ numbers = """\
 
 nos = [ int(line) for line in numbers ]
 
-print len(nos)
-
-print nos[0]
-
-# use reduce as an experiment
-
 total =  reduce(lambda x,y: x+y, nos)
-print total
+# Print the first ten digits
+print str(total)[:10]

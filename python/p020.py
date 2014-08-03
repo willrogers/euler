@@ -6,7 +6,6 @@ def fact(n):
         total *= i
     return total
 
-print fact(100)
 
 def sum_digits(n):
     total = 0

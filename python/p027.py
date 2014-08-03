@@ -6,7 +6,6 @@ for i in range(2, UPPER):
     if is_prime(i):
         primes.append(i)
         
-print primes
 
 # b must be prime and therefore positive
 # a must be odd
@@ -20,8 +19,6 @@ def get_no_primes(a, b):
         if is_prime(i * i + a * i + b):
             i += 1
         else:
-            if i == 71:
-                print a, b, a * b
             return i
 
 

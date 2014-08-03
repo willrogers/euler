@@ -3,9 +3,9 @@
 import sys
 import math 
 
-number = int(sys.argv[1])
+LIMIT = 600851475143
 
-factors = list()
+factors = []
 
 # Just get the next smallest factor
 def get_next_factor(n):
@@ -18,7 +18,7 @@ def get_next_factor(n):
         i += 1
 
 
-latest = number
+latest = LIMIT
 while True:
     x = get_next_factor(latest)
     factors.append(x)
@@ -28,6 +28,5 @@ while True:
     if latest == 1:
         break
 
-factors.reverse()
-print factors
+print factors[-1]
 

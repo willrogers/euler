@@ -55,7 +55,6 @@ def get_routes(length):
         routes = next_level(routes) 
     return routes
 
-print "about to get routes"
 routes = get_routes(HEIGHT)
 
 # now try every route
@@ -65,5 +64,4 @@ for route in routes:
     for i,j in zip(route, range(HEIGHT)):  
             total += t[j][i]
     vals.append(total)
-print vals
 print max(vals)
