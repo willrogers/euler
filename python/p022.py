@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """
 For each item in the list of names, get an alphabetical score.  Then multiply
 it by its position in the list to get an overall score.

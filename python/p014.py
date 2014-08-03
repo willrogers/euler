@@ -7,7 +7,6 @@ and stopping at 1.
 First attempt, after removing print statements and unnecessary function
 calls, took about a minute.
 '''
-#!/usr/bin/env python
 
 import cProfile
 

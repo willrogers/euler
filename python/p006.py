@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 
 def sum_squares(n):
     total = 0

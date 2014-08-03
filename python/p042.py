@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """
 Find how many of the words in words.txt are triangle words.
 All the words are upper case.

@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 """
 How many circular primes are there below 1m?
 A circluar prime has all rotations of the number as also prime.

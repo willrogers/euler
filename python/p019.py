@@ -2,7 +2,6 @@
 Find the number of months in the twentieth century whose 
 first day was a Sunday.
 """
-#!/usr/bin/env python
 
 reg_year = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 leap_year = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
