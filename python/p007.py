@@ -16,6 +16,6 @@ while True:
     no += 1
     
     if count == TARGET:
-        print no
+        print(no)
         break
 
