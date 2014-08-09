@@ -22,7 +22,7 @@ int main(char *args[]) {
 	int i = 0;
 	while(1) {
 		if (divides_all(test, MAX_DIVISOR)) { 
-			printf("%d succeeded!\n", test);
+			printf("%d\n", test);
 			exit(0);
 		} else {
 			test += 2;

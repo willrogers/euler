@@ -14,7 +14,6 @@ int in(int value, int array[SIZE]) {
 	int i =0;
 	for (i=0; i<SIZE; i++) {
 		if (value == array[i]) {
-			printf("value is %d\n", value);
 			return i;
 		}
 	}
@@ -23,7 +22,6 @@ int in(int value, int array[SIZE]) {
 
 int main () {
 
-	printf("happening?\n");
 	int numbers[SIZE] = {0};
 	int squares[SIZE] = {0};
 
@@ -44,19 +42,16 @@ int main () {
 				triples[count][1] = j;
 				triples[count][2] = y;
 				count++;
-				printf("i, j, k %d %d %d\n", i, j, y);
 			}
 		}
 	}
-	printf("happening?\n");
 	for (i=0; i < count; i++) {
 		int x = triples[i][0];
 		int y = triples[i][1];
 		int z = triples[i][2];
-//		printf("%d %d %d\n", x, y, z);
 		if (x + y + z == 1000) {
-			printf("  success! %d %d %d\n", x, y, z);
-			printf("The product is %d\n", x * y * z);
+			printf("%d\n", x * y * z);
+			return 0;
 		}
 	}
 	return 0;

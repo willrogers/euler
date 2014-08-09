@@ -12,5 +12,6 @@ int main() {
         } 
     }
     
-    printf("The total is: %d\n", total);
+    printf("%d\n", total);
+    return 0;
 }

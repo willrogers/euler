@@ -40,5 +40,6 @@ int main() {
             max = next;
         }
     }
-    printf("The biggest prime factor is %d\n", max);
+    printf("%d\n", max);
+    return 0;
 }
