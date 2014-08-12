@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROBLEMS=010
+PROBLEMS=030
 LOG=compile.log
 rm $LOG
 
@@ -62,6 +62,7 @@ for x in $(seq -w $PROBLEMS) ; do
 			fi
 			printf "%10s %3ds\n" $result $duration
 		else
+            echo $ans
 			echo "Problem $x: runtime error"
 		fi
 	fi
