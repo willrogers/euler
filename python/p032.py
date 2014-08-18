@@ -17,9 +17,7 @@ for i in range(10000):
         if k < 100000:
             s = str(k) + str(i) + str(j)
             if is_pandigital(s):
-                print k
                 prods.add(int(k))
 
-print prods
 print sum(prods)
 

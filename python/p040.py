@@ -1,6 +1,4 @@
 
-
-
 # 9 numbers have 1 digit
 # 90 numbers have 2 digits
 # 900 numbers have 3 digits
@@ -20,9 +18,6 @@ i = 1
 while len(s) < 10000000:
     s += str(i)
     i += 1
-
-print s[1]
-print s[2]
 
 tot = 1
 for i in range(7):

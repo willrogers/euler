@@ -19,14 +19,11 @@ def fact_sum(i):
         tot += f
     return i == tot
 
-        
+
 matches = []
 
 for i in range(10, 1000000):
-    if i % 100000 == 0:
-        print "got to", i
     if fact_sum(i):
         matches.append(i)
 
-print matches
 print sum(matches)

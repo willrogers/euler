@@ -14,19 +14,17 @@ def truncatable(p):
         if not is_prime(int(s[i:])):
             return False
         if not is_prime(int(s[:i])):
-            return False         
+            return False
     return True
 
 truncs = []
 for i in itertools.count(11, 2):
     if is_prime(i):
         if truncatable(i):
-            print i
             truncs.append(i)
     if len(truncs) == TOTAL:
         break
 
-print truncs
 print sum(truncs)
 
 

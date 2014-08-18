@@ -14,7 +14,6 @@ primes = []
 tot = 0
 for i in range(1, threshold, 2):
     if is_prime(i):
-#        print i
         primes.append(i)
         tot += 1
 
@@ -28,7 +27,6 @@ for prime in primes:
             cp = False
             break
     if cp:
-        cps.append(prime)    
+        cps.append(prime)
 
-print cps
 print len(cps)
