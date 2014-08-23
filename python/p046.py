@@ -19,7 +19,6 @@ for i in itertools.count(3, 2):
         PRIMES.append(i)
     else:
         if refutes(i):
-            print "%s refutes" % i
+            print i
             break
-        
 

@@ -15,7 +15,7 @@ import math
 from utils import pentagons, is_pen
 
 
-       
+
 UPPER = 1000000000
 
 pens = []
@@ -44,7 +44,6 @@ if __name__ == "__main__":
                 if psumpen and pdiffpen:
                     print p, pdash, pdiff, psum
                     print "Matched!!"
-                
         except IndexError:
             # done
             if step % 20 == 0:

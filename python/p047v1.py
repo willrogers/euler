@@ -18,9 +18,9 @@ for i in itertools.count():
     else:
         COUNT = 0
         START = 0
-            
+
     if COUNT == LEN:
         print START
         break
 
-            
+

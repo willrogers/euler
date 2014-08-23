@@ -44,11 +44,7 @@ while True:
     last_but_one = last
     last = fib
     if pan_end(fib):
-        print "pan end"
-        print n
         if pan_start(fib):
-            print "pan start"
-            print fib
             print n
             break
 

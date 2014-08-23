@@ -8,9 +8,7 @@ for i in range(100):
         num = i**j
         digsum = sum(int(c) for c in str(num))
         if (digsum > maximum):
-            maximum = digsum        
-
-print maximum
+            maximum = digsum
 
 # or...
 maxsum = max([sum(int(c) for c in str(i**j)) for i in range(100) for j in range(100)])

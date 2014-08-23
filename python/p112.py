@@ -16,7 +16,7 @@ while True:
 
     f = float(bouncy)/ i
     if f == 0.99:
-        print f, i, bouncy
+        print i
         break
 
     i += 1

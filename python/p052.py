@@ -10,11 +10,7 @@ MULT = 6
 def digits(n):
     return sorted(str(n))
 
-print digits(1767)
-
 for i in itertools.count(1):
-    if i % 100000 == 0:
-        print i
     digs = digits(i)
     matched = True
     for j in range(1, MULT+1):

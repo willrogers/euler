@@ -23,8 +23,10 @@ for tri in stris:
     tris2[sum(tri)] += 1
 
 maxp = 0
+maxn = 0
 for key in tris2:
     if tris2[key] > maxp:
         maxp = tris2[key]
-        print key, tris2[key]
+        maxn = key
 
+print maxn

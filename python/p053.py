@@ -12,11 +12,9 @@ def ncr(n, r):
     return factorial(n) / (factorial(r) * factorial(n-r))
 
 for n in range(1, 101):
-    print n
     for r in range(n):
         if ncr(n, r) > LIMIT:
-            print n, r
             total += 1
 
-    
+
 print total
