@@ -14,6 +14,7 @@ primes = prime_gen(THRESHOLD)
 
 cps = []
 
+# Use the prime generator
 for prime in primes:
     rotations = srotate(prime)
     if all(is_prime(rot) for rot in rotations):

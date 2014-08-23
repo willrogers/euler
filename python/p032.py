@@ -1,5 +1,5 @@
 '''
-Find all the products whose two multiplicands and 
+Find all the products whose two multiplicands and
 product contain the digits 1-9 exactly once.
 Example: 39 * 186 = 7254
 
@@ -16,8 +16,8 @@ for i in range(10000):
         k = i * j
         if k < 100000:
             s = str(k) + str(i) + str(j)
-            if is_pandigital(s):
-                prods.add(int(k))
+            if len(s) == 9 and is_pandigital(s):
+                prods.add(k)
 
 print sum(prods)
 
