@@ -11,7 +11,8 @@ def from_file(filepath):
         lines = file.readlines()
         content = "".join(lines)
     return content
-    
+
+
 def divisors(n):
     """
     Return all the divisors of an integer.  Does not include the number 
@@ -23,9 +24,10 @@ def divisors(n):
             divs.append(i)
     return divs
 
+
 def divisors2(n):
     """
-    Return all the divisors of an integer.  Does not include the number 
+    Return all the divisors of an integer.  Does not include the number
     itself.
     This is quicker than divisors because it's much quicker to factorise
     than to check every number to see if it divides.
@@ -41,6 +43,7 @@ def divisors2(n):
     # only want unique values
     return sorted(list(set(d)))
 
+
 def factors(n):
     """
     Return all the factors of n as a list.
@@ -55,7 +58,8 @@ def factors(n):
             i += 1
     return fs
 
-def pow(x, n): 
+
+def pow(x, n):
     """
     Return x to the power n.
     """
@@ -93,6 +97,7 @@ def pentagons():
         i += 1
         yield i * (3 * i - 1) / 2
 
+
 def is_pen(num):
     '''
     Only the positive solution is valid.
@@ -101,25 +106,30 @@ def is_pen(num):
     nround = round(n, 0)
     return abs(n - nround) < EPS
 
+
 def triangles():
     start = 0
     for i in itertools.count(start):
         yield i * (i + 1) / 2
 
+
 def hexagons():
     start = 0
     for i in itertools.count(start):
-        yield i * (2 * i - 1) 
+        yield i * (2 * i - 1)
+
 
 def is_tri(num):
     n = (-1 + math.sqrt(1 + 8*num)) / 2.0
     nround = round(n, 0)
     return abs(n-nround) < EPS
 
+
 def is_hex(num):
     n = (1 + math.sqrt(1 + 8*num)) / 4.0
     nround = round(n, 0)
     return abs(n-nround) < EPS
+
 
 def triangle(n):
     """
@@ -130,11 +140,13 @@ def triangle(n):
         tot += i + 1
     return tot
 
+
 def triangle2(n):
     """
     Return the nth triangle number.
     """
     return 0.5 * n * (n + 1) 
+
 
 def is_triangle(n):
     """
@@ -145,10 +157,12 @@ def is_triangle(n):
     n  = root - 0.5
     return abs(round(n) - n)  < epsilon    
 
+
 def is_square(i):
     x = math.sqrt(i)
     y = round(x, 0)
     return abs(x - y) < EPS
+
 
 def is_palindrome(n):
     """
@@ -180,6 +194,7 @@ def is_pandigital(i):
         return True
     return False
 
+
 def rotate(n):
     """
     Provide all rotations of an integer.  For example:
@@ -194,8 +209,9 @@ def rotate(n):
         z = pow(10,mag) * x + y
         rotations.append(z)
         n = z
-    
+
     return rotations
+
 
 def srotate(n):
     """
@@ -210,6 +226,7 @@ def srotate(n):
         rotations.append(int(t))
         s = t
     return rotations
+
 
 def factorial(n):
     assert n >= 0
@@ -242,13 +259,4 @@ def is_bouncy(n):
             break
 
     return not_forward and not_back
-
-if __name__ == "__main__":
-    print srotate(1)
-    print srotate(10)
-    print srotate (413)
-
-    print factorial(0)
-    print factorial(1)
-    print factorial(23)
 
