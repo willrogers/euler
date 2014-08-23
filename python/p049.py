@@ -10,25 +10,30 @@ LOWER = 1001
 UPPER = 10000
 
 PRIMES = []
-POSSIBLES = []
+answers = []
 
 for i in range(LOWER, UPPER, 2):
     if is_prime(i):
         PRIMES.append(i)
 
-    
-# this part takes the time
+
+def int_anagram(int1, int2):
+    return sorted(str(int1)) == sorted(str(int2))
+
+
 for p in PRIMES:
     limit = ((UPPER - p)/2)
     for i in range(2, limit, 2):
         p1 = p + i
         p2 = p + 2 * i
+        if not int_anagram(p, p1) or not int_anagram(p, p2):
+            continue
         if p1 in PRIMES and p2 in PRIMES:
-            POSSIBLES.append((p, p1, p2))
+            answers.append((p, p1, p2))
 
 
-for poss in POSSIBLES:
-    if sorted(str(poss[0])) == sorted(str(poss[1])) == sorted(str(poss[2])):
-        print poss
-
+ANSWER1 = (1487, 4817, 8147)
+for answer in answers:
+    if answer != ANSWER1:
+        print "".join(str(a) for a in answer)
 
