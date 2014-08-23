@@ -16,9 +16,6 @@ def load_solutions(filename):
                 pass
     return answers
 
-def check_answer(answers, num, answer):
-    return answers[num] == answer
-    
 
 if __name__ == '__main__':
     answers = load_solutions(SOLUTIONS)
