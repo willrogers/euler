@@ -11,18 +11,26 @@
 # The tenth digit falls in 90 * 2
 # The hundredth digit falls in 90 * 2
 # ...
-# You don't have to be smart, this is python.
+# Anyway, ignore the above; you don't have to be smart, this is python.
 
-s = ""
+from cStringIO import StringIO
+
+# Need a StringIO because concatenating strings
+# in pypy is extremely slow.
+s = StringIO()
 i = 1
-while len(s) < 10000000:
-    s += str(i)
+length = 0
+while length < 10000000:
+    s.write(str(i))
+    length += len(str(i))
     i += 1
+
+s = s.getvalue()
 
 tot = 1
 for i in range(7):
     tot *= int(s[1*10**i - 1])
 
-print tot 
+print tot
 
 
