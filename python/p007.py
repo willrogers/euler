@@ -6,15 +6,15 @@ import sys
 
 TARGET = 10001
 
-count = 0
-no = 2
+# Start at 1 so we can test only odd numbers
+count = 1
+no = 1
 
-while True:
+while count < TARGET:
+    no += 2
     if (is_prime(no)):
         count += 1
-    no += 1
-    
-    if count == TARGET:
-        print no
-        break
+
+print no
+
 
