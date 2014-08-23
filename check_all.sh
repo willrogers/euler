@@ -52,7 +52,7 @@ function run_haskell {
 	$PDIR/p$1
 }
 
-NUM_REGEX=^[0-9]+$
+NUM_REGEX="^-?[0-9]+$"
 
 start=$(date +%s)
 correct=0
