@@ -77,6 +77,16 @@ def is_prime(n):
             return False
     return True
 
+
+def prime_gen(n):
+    yield 2
+    x = 3
+    while x < n:
+        if is_prime(x):
+            yield x
+        x += 2
+
+
 def pentagons():
     i = 0
     while True:
