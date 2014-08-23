@@ -1,23 +1,30 @@
 #!/bin/bash
 
-PROBLEMS=030
+PROBLEMS=400
 LOG=compile.log
-rm $LOG
+if [ -f $LOG ] ; then
+	rm $LOG
+fi
 
-type=$1
-PDIR=$1
+if [ -z $1 ] || [ ! -d $1 ] ; then
+	echo "Usage: $0 <lang>"
+	exit
+fi
+
+LANG=$1
+PDIR=$LANG
 LIBS=$PDIR/Utils.hs
 
 function compile_python {
 	if [ -f $PDIR/p$1.py ] ; then
-		return 0 
+		return 0
 	else
 		return 1
 	fi
 }
 
 function run_python {
-	python $PDIR/p$1.py 2>> $LOG
+	pypy $PDIR/p$1.py 2>> $LOG
 }
 
 function compile_haskell {
@@ -45,28 +52,34 @@ function run_haskell {
 	$PDIR/p$1
 }
 
+NUM_REGEX=^[0-9]+$
 
+start=$(date +%s)
 correct=0
 for x in $(seq -w $PROBLEMS) ; do
-	if eval "compile_$type $x"; then
+	if eval "compile_$LANG $x"; then
 		st=$(date +%s)
-		if ans=$(eval "run_$type $x") ; then 
-		
-			end=$(date +%s)
-			duration=$(echo "$end-$st" | bc)
-			printf "Problem %3d: answer %12d " $(expr $x + 0) $ans 
-			result=incorrect
-			if ./checker.py $x $ans ; then 
-				result=correct
-				((correct=correct+1))
+		if ans=$(eval "run_$LANG $x") ; then 
+			if ! [[ $ans =~ $NUM_REGEX ]] ; then
+				printf "Problem %3d: not a number\n" $(expr $x + 0)
+			else
+				end=$(date +%s)
+				duration=$(echo "$end-$st" | bc)
+				printf "Problem %3d: answer %12d " $(expr $x + 0) $ans 
+				result=incorrect
+				if ./checker.py $x $ans ; then 
+					result=correct
+					((correct=correct+1))
+				fi
+				printf "%10s %3ds\n" $result $duration
 			fi
-			printf "%10s %3ds\n" $result $duration
 		else
-            echo $ans
-			echo "Problem $x: runtime error"
+			printf "Problem %3d: runtime error\n" $(expr $x + 0)
 		fi
 	fi
 done
 
 
-echo "$correct problems solved"
+end=$(date +%s)
+duration=$(echo "$end-$start" | bc)
+echo "$correct problems solved in ${duration}s"
