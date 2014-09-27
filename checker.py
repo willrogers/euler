@@ -24,7 +24,7 @@ if __name__ == '__main__':
         answer = str(sys.argv[2])
     except IndexError:
         print 'Usage: %s <no> <answer>' % sys.argv[0]
-        sys.exit()
+        sys.exit(2)
 
     if answers[key] == answer:
         sys.exit(0)
