@@ -2,31 +2,21 @@
 How many circular primes are there below 1m?
 A circluar prime has all rotations of the number as also prime.
 
-This version must be inefficient, but it solved it in about 20s.
+This version may be inefficient, but it solved it in about 7s.
 """
 
 import math
-from utils import is_prime, srotate
+from utils import is_prime, prime_gen, srotate
 
-threshold = 1000000
-primes = []
+THRESHOLD = 1000000
 
-tot = 0
-for i in range(1, threshold, 2):
-    if is_prime(i):
-        primes.append(i)
-        tot += 1
+primes = prime_gen(THRESHOLD)
 
 cps = []
 
 for prime in primes:
     rotations = srotate(prime)
-    cp = True
-    for rot in rotations:
-        if not is_prime(rot):
-            cp = False
-            break
-    if cp:
+    if all(is_prime(rot) for rot in rotations):
         cps.append(prime)
 
 print len(cps)
