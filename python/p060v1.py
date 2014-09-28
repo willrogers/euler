@@ -1,16 +1,16 @@
 '''
-This is too slow - more than two minutes even using pypy.
+This is still quite slow - around 10 seconds using pypy.
 '''
 
 from itertools import combinations, permutations
 from utils import prime_gen, is_prime
+import math
 
 # Deduce from trial and error that primes up to 10000 are needed
 primes = list(prime_gen(10000))
-print(len(primes))
 
 
-# There are 14m calls to is_prime, meaning that it must be 
+# There are typically 14m calls to is_prime, meaning that it must be 
 # called multiple times on the same number.  Quicker to cache
 # results and only call it on new numbers.
 prime_cache = {}
@@ -24,15 +24,15 @@ def is_prime_cached(n):
         return p
 
 
-def prime_perms(tup):
-    '''
-    Given a tuple of numbers, return True if all permutations of two of 
-    those numbers are prime.
-    '''
-    perms = permutations(tup, 2)
-    perms = [int(''.join(str(i) for i in p)) for p in perms]
-    return all(is_prime_cached(p) for p in perms)
-
+def prime_test(p1, p2):
+    # This mathematical manipulation is slightly quicker
+    # than the string manipulation I'd often do.
+    test1 = p1*10**int(math.ceil(math.log10(p2))) + p2
+    if not is_prime_cached(test1):
+        return False
+    test2 = p2*10**int(math.ceil(math.log10(p1))) + p1
+    return is_prime_cached(test2)
+    
 
 def extend(tups, primes):
     '''
@@ -47,7 +47,7 @@ def extend(tups, primes):
                 continue
             ok = True
             for tp in t:
-                if not is_prime_cached(int(str(tp) + str(p))) or not is_prime_cached(int(str(p) + str(tp))):
+                if not prime_test(tp, p):
                     ok = False
                     break
             if ok:
@@ -55,14 +55,9 @@ def extend(tups, primes):
 
     return longer_tups
 
-dups = [sorted(x) for x in combinations(primes, 2) if prime_perms(x)]
-print len(dups)
+dups = [sorted(x) for x in combinations(primes, 2) if prime_test(*x)]
 trips = extend(dups, primes)
-print len(trips)
 quads = extend(trips, primes)
-print len(quads)
 quins = extend(quads, primes)
-print len(quins)
 
 print(min(sum(q) for q in quins))
-
