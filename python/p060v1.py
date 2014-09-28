@@ -2,11 +2,26 @@
 This is too slow - more than two minutes even using pypy.
 '''
 
-from itertools import combinations, permutations, product
+from itertools import combinations, permutations
 from utils import prime_gen, is_prime
 
-# Deduce from trial and error that 10000 primes are needed
+# Deduce from trial and error that primes up to 10000 are needed
 primes = list(prime_gen(10000))
+print(len(primes))
+
+
+# There are 14m calls to is_prime, meaning that it must be 
+# called multiple times on the same number.  Quicker to cache
+# results and only call it on new numbers.
+prime_cache = {}
+
+def is_prime_cached(n):
+    try:
+        return prime_cache[n]
+    except KeyError:
+        p = is_prime(n)
+        prime_cache[n] = p
+        return p
 
 
 def prime_perms(tup):
@@ -16,10 +31,8 @@ def prime_perms(tup):
     '''
     perms = permutations(tup, 2)
     perms = [int(''.join(str(i) for i in p)) for p in perms]
-    return all(is_prime(p) for p in perms)
+    return all(is_prime_cached(p) for p in perms)
 
-
-dups = [sorted(x) for x in combinations(primes, 2) if prime_perms(x)]
 
 def extend(tups, primes):
     '''
@@ -30,11 +43,11 @@ def extend(tups, primes):
     for t in tups:
         for p in primes:
             # The last in the sequence is the largest prime.
-            if p < t[-1]:
+            if p <= t[-1]:
                 continue
             ok = True
             for tp in t:
-                if not is_prime(int(str(tp) + str(p))) or not is_prime(int(str(p) + str(tp))):
+                if not is_prime_cached(int(str(tp) + str(p))) or not is_prime_cached(int(str(p) + str(tp))):
                     ok = False
                     break
             if ok:
@@ -42,9 +55,14 @@ def extend(tups, primes):
 
     return longer_tups
 
+dups = [sorted(x) for x in combinations(primes, 2) if prime_perms(x)]
+print len(dups)
 trips = extend(dups, primes)
+print len(trips)
 quads = extend(trips, primes)
+print len(quads)
 quins = extend(quads, primes)
+print len(quins)
 
-print(min(sum(q) for q in quads))
+print(min(sum(q) for q in quins))
 
