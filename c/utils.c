@@ -1,4 +1,4 @@
-/* 
+/*
    On Ubuntu, to include math.h you have to add -lm to gcc.
  */
 #include <stdio.h>
@@ -16,9 +16,12 @@ int is_prime(int n) {
 	if (n < 2) {
 		 return 0;
 	}
+	if (n == 2) {
+		return 1;
+	}
 
 	/* only need to go up to the root of the number */
-        int root = iroot(n);
+	int root = iroot(n);
 
 	int i = 2;
 	for (i; i <= root; i++) {

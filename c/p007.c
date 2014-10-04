@@ -11,14 +11,12 @@ int main(char * args[]) {
 	int i = 0;
 	for (i = 0; i < PRIMES; i++) {
 		while (!is_prime(test)) {
-			test++;	
+			test++;
 		}
 		primes[i] = test;
 		test++;
-	}	
-
-
-	printf("%d\n", primes[PRIMES]);
+	}
+	printf("%d\n", primes[PRIMES - 1]);
 	return 0;
 }
 
