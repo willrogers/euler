@@ -2,6 +2,8 @@
 
 PROBLEMS=400
 LOG=compile.log
+DATADIR='./data'
+
 if [ -f $LOG ] ; then
 	rm $LOG
 fi
@@ -45,7 +47,7 @@ function compile_c {
 	fi
 }
 function run_c {
-	$PDIR/p$1
+	$PDIR/p$1 $DATADIR
 }
 
 function run_haskell {

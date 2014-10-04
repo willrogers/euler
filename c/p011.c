@@ -4,16 +4,17 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#define DIMENSION 20
+#include <string.h>
 
-#define DATA_FILE "../data/grid.txt"
+#define DIMENSION 20
+#define DATA_FILE "grid.txt"
 
 /* This currently copies the array. */
-void parse_data(int return_array[DIMENSION][DIMENSION]) {
+void parse_data(char *data_file, int return_array[DIMENSION][DIMENSION]) {
 
-	FILE * file = fopen(DATA_FILE, "r");
-	
-	return_array[0][0] = 1;	
+	FILE * file = fopen(data_file, "r");
+
+	return_array[0][0] = 1;
 
 	char c;
 	int d1, d2, d3;
@@ -27,14 +28,21 @@ void parse_data(int return_array[DIMENSION][DIMENSION]) {
 			return_array[i][j] = d1 * 10 + d2;
 		}
 	}
-
-
 	fclose(file);
 }
 
-int main() {
+int main(int argc, char*argv[]) {
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s <data directory>\n", argv[0]);
+		return 1;
+	}
 	int a[DIMENSION][DIMENSION] = {0};
-	parse_data(a);
+	// construct correct path
+	char* filepath = calloc(strlen(argv[1]) + strlen(DATA_FILE) + 2, sizeof(char));
+	strcat(filepath, argv[1]);
+	strcat(filepath, "/");
+	strcat(filepath, DATA_FILE);
+	parse_data(filepath, a);
 	
 	int i, j;
 	int tot;
