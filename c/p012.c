@@ -138,13 +138,12 @@ int main() {
 	int d = 0;
 	int ntriangle = 1;
 	int triangle = 1;
-	
+
 	/* construct triangle numbers and check the number of divisors */
 	while (d < 500) {
 		triangle += ++ntriangle;
 		d = divisors(triangle);
 	}	
-	
-	printf("Triangle number %d has %d divisors\n", triangle, d);
+	printf("%d\n", triangle);
 	return 0;
 }
