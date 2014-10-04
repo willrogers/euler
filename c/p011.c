@@ -75,7 +75,7 @@ int main() {
 			}
 		}	
 	}
-
-	printf("The largest sequence is %d.\n", max);
+	printf("%d\n", max);
+	return 0;
 }
 
