@@ -3,10 +3,12 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <limits.h>
+#include <string.h>
 
 /* Details of data file */
-#define DATA_FILE "../data/longs.txt"
+#define DATA_FILE "longs.txt"
 #define LINES 100
 #define NUM_LENGTH 50
 /* Used for each part of largeint */
@@ -36,11 +38,16 @@ struct largeint new_largeint() {
 }
 
 void print_largeint(struct largeint * l) {
-	printf("%10ld%010ld%010ld%010ld%010ld%010ld\n", 
-		l->l6, l->l5, l->l4, l->l3, l->l2, l->l1); 
+	printf("%10ld%010ld%010ld%010ld%010ld%010ld\n",
+		l->l6, l->l5, l->l4, l->l3, l->l2, l->l1);
 }
 
-struct largeint add_largeint(struct largeint li1, struct largeint li2) { 
+void sprint_largeint(struct largeint * l, char *str) {
+	sprintf(str, "%10ld%010ld%010ld%010ld%010ld%010ld\n",
+		l->l6, l->l5, l->l4, l->l3, l->l2, l->l1);
+}
+
+struct largeint add_largeint(struct largeint li1, struct largeint li2) {
 	struct largeint li;
 	long l;
 	int m = 0;
@@ -71,7 +78,7 @@ struct largeint add_largeint(struct largeint li1, struct largeint li2) {
 	return li;
 }
 
-long mul_ten_digits(int * array) { 
+long mul_ten_digits(int * array) {
 	int i;
 	long current = 0;
 	for (i = 0; i < LONG_DIGITS; i++) {
@@ -81,8 +88,8 @@ long mul_ten_digits(int * array) {
 	return current;
 }
 
-void parse_file(struct largeint * array) {
-	FILE * f = fopen(DATA_FILE, "r");
+void parse_file(char *filepath, struct largeint * array) {
+	FILE * f = fopen(filepath, "r");
 	
 	char c;
 	int digit;
@@ -90,7 +97,7 @@ void parse_file(struct largeint * array) {
 
 	int num[NUM_LENGTH];
 	/* we know the exact format of the file */
-	for (i = 0; i < LINES; i++) { 
+	for (i = 0; i < LINES; i++) {
 		struct largeint lint;
 		for (j = 0; j < NUM_LENGTH; j++) {
 			c = fgetc(f);
@@ -110,15 +117,40 @@ void parse_file(struct largeint * array) {
 	fclose(f);
 }
 
-int main() { 
+int main(int argc, char *argv[]) {
+	if (argc != 2) {
+		fprintf(stderr, "Usage: %s <data directory>\n", argv[0]);
+		return 1;
+	}
+	// construct correct path
+	char* filepath = calloc(strlen(argv[1]) + strlen(DATA_FILE) + 2, sizeof(char));
+	strcat(filepath, argv[1]);
+	strcat(filepath, "/");
+	strcat(filepath, DATA_FILE);
+
 	long long longs[LINES];
 	struct largeint lints[LINES];
-	parse_file(&lints[0]);
+	parse_file(filepath, &lints[0]);
 
 	int i;
 	struct largeint total = new_largeint();
 	for(i = 0; i < LINES; i++) {
 		total = add_largeint(total, lints[i]);	
 	}
-	print_largeint(&total);
+	// Now print the first ten numbers from the largeint
+	char *str = calloc(61, sizeof(char));
+	sprint_largeint(&total, str);
+	i = 0;
+	while(str[i] == ' ') {
+		i+= 1;
+	}
+	int lim = i + 10;
+	for (i; i < lim; i++) {
+		printf("%c", str[i]);
+	}
+	printf("\n");
+	// for neatness
+	free(str);
+	free(filepath);
+	return 0;
 }
