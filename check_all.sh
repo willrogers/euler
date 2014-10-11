@@ -29,6 +29,18 @@ function run_python {
 	pypy $PDIR/p$1.py 2>> $LOG
 }
 
+function compile_ruby {
+	if [ -f $PDIR/p$1.rb ] ; then
+		return 0
+	else
+		return 1
+	fi
+}
+
+function run_ruby {
+	ruby $PDIR/p$1.rb 2>> $LOG
+}
+
 function compile_haskell {
 	if [ -f $PDIR/p$1.hs ] ; then
 		ghc $PDIR/p$1.hs -i $LIBS >> $LOG 2>&1
