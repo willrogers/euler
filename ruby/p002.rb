@@ -5,7 +5,7 @@ LIMIT = 4000000
 f1 = 1
 f2 = 2
 
-tot = 3
+tot = 2
 
 while f2 < LIMIT do
   tmp = f2
