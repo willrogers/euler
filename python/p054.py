@@ -38,24 +38,28 @@ def classify_flush(hand):
     else:
         return FLUSH
 
-def classify_two_groups(hand):
-    pass
+def classify_groups(hand):
+    cards = defaultdict(list)
+    for card in hand:
+        print('Card is %s' % card)
+        cards[card[1]].append(card[0])
+    print('Classifying groups for hand %s' % hand)
+    print(cards)
+    best = None
+    second = None
+    for suit in cards.itervalues():
+        if len(suit) == 4:
+            best = FOUR, max(suit)
+        elif len(suit) == 3:
+            max_suit = len(suit)
+            max_num = max(suit)
+        elif len(suit) > sec_suit
 
 def classify(hand):
     if len(set(hand[:,1])) == 1:
         return classify_flush(hand)
-    groups = len(set(hand[:,0]))
-    if (groups) == 2:
-        # full house, four in a row
-        return classify_two_groups(hand)
-        pass
-    if (groups) == 3:
-        # three, two pair
-        pass
-    if (groups) == 4:
-        # pair
-        pass
-
+    else:
+        return classify_groups(hand)
 
 def read_hand(strings):
     hand = numpy.zeros([5,2])
@@ -90,3 +94,4 @@ hand = [2,HEARTS,3,HEARTS,4,HEARTS,5,HEARTS,6,HEARTS]
 hand = numpy.array(hand).reshape(5,2)
 print hand
 print(classify(hand))
+print(classify(hands[0][0]))

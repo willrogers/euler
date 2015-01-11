@@ -1,7 +1,10 @@
+import os
 import math
 import itertools
 
 EPS = 0.00000001
+DATADIR = '../data'
+
 
 def from_file(filepath):
     """
@@ -9,13 +12,19 @@ def from_file(filepath):
     """
     with open(filepath) as file:
         lines = file.readlines()
-        content = "".join(lines)
-    return content
+        content = ''.join(lines)
+    return content.strip()
+
+
+def load_data(filename):
+    here = os.path.dirname(os.path.realpath(__file__))
+    datafile = os.path.join(here, DATADIR, filename)
+    return from_file(datafile)
 
 
 def divisors(n):
     """
-    Return all the divisors of an integer.  Does not include the number 
+    Return all the divisors of an integer.  Does not include the number
     itself.
     """
     divs = []

@@ -24,6 +24,17 @@ def pan_end(n):
     end = str(n % BILLION)
     return pan_str(end)
 
+def pan_end2(n):
+    digits = []
+    for i in range(9):  
+        last_digit = n % 10
+        n /= 10
+        if last_digit in digits:
+            return False
+        else:
+            digits.append(last_digit)
+    return set(digits) == INTS
+
 def pan_start(n):
     '''
     Return True if the first nine digits are 1-9 pandigital.
@@ -35,6 +46,9 @@ def pan_str(nstr):
     ints = set(int(digit) for digit in nstr)
     return ints == INTS
 
+print pan_end2(123456789)
+print pan_end2(132123123456789)
+print pan_end2(1231234567891)
 
 last_but_one = 0
 last = 1
@@ -43,7 +57,7 @@ while True:
     fib = last_but_one + last
     last_but_one = last
     last = fib
-    if pan_end(fib):
+    if pan_end2(fib):
         if pan_start(fib):
             print n
             break
