@@ -1,4 +1,7 @@
 import numpy
+import utils
+
+FILENAME = 'p054_poker.txt'
 
 HIGH = 0
 PAIR = 1
@@ -75,17 +78,17 @@ def read_hand(strings):
     return numpy.sort(hand, axis=0)
 
 
-def load(filename):
+def load_hands():
+    file_string = utils.load_data(FILENAME)
     hands = []
-    with open(filename) as f:
-        for line in f:
-            parts = line.split()
-            hand1 = read_hand(parts[0:5])
-            hand2 = read_hand(parts[5:10])
-            hands.append((hand1, hand2))
+    for line in file_string.split('\n'):
+        parts = line.strip().split()
+        hand1 = read_hand(parts[0:5])
+        hand2 = read_hand(parts[5:10])
+        hands.append((hand1, hand2))
     return hands
 
-hands = load('../data/p054_poker.txt')
+hands = load_hands()
 
 print(hands[0])
 print(len(hands))
