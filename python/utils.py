@@ -186,6 +186,17 @@ def is_palindrome(n):
     return True
 
 
+def int_reverse(n):
+    return int(''.join(x for x in reversed(str(n))))
+def int_reverse2(n):
+    new = n % 10
+    for i in range(int(math.ceil(math.log10(n)))):
+        new *= 10 + n % 10
+        n /= 10
+    #print new
+    return int(''.join(x for x in reversed(str(n))))
+
+
 def is_pandigital(i):
     '''
     Return True if the integer contains each digit once up to the
