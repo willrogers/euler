@@ -1,8 +1,8 @@
 
-from utils import int_reverse2
+from utils import int_reverse, int_reverse2
 
 ODDS = ['1', '3', '5', '7', '9']
-LIMIT = 10000000
+LIMIT = 1000
 
 
 def all_odd(n):
@@ -22,7 +22,9 @@ tot = 0
 
 for i in xrange(LIMIT):
     if reversible(i):
+        print i
         tot += 1
-    
+
+print
 print(tot)
-    
+

@@ -1,5 +1,6 @@
 import numpy
 import utils
+from collections import defaultdict
 
 FILENAME = 'p054_poker.txt'
 

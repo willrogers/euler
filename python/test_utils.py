@@ -48,5 +48,12 @@ class TestSequenceFunctions(unittest.TestCase):
             if result != cases[case]:
                 self.fail("is_square failed for %s: it got %s" % (case, result))
 
+    def test_int_reverse(self):
+        cases = {123:321, 1234:4321, 1:1, 134576:675431}
+        for case in cases:
+            result = utils.int_reverse2(case)
+            if result != cases[case]:
+                self.fail("is_square failed for %s: it got %s" % (case, result))
+
 if __name__ == '__main__':
     unittest.main()

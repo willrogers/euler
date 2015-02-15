@@ -188,12 +188,19 @@ def is_palindrome(n):
 
 def int_reverse(n):
     return int(''.join(x for x in reversed(str(n))))
+
+
 def int_reverse2(n):
     new = n % 10
-    for i in range(int(math.ceil(math.log10(n)))):
-        new *= 10 + n % 10
+    #print("n is %s" % n)
+    #print("new is %s" % new)
+    for i in range(int(math.ceil(math.log10(n))) - 1):
         n /= 10
+        new  = new * 10 + (n % 10)
+    #    print("n is %s" % n)
+    #    print("new is %s" % new)
     #print new
+    return new
     return int(''.join(x for x in reversed(str(n))))
 
 
