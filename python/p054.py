@@ -1,5 +1,8 @@
 import numpy
 import utils
+import collections
+import logging as log
+log.basicConfig()
 
 FILENAME = 'p054_poker.txt'
 
@@ -31,38 +34,109 @@ ROYALS = {'T': 10,
           'A': 14}
 
 
-def classify_flush(hand):
-    print('Classfying %s' % hand)
-    if max(hand[:,0]) - min(hand[:,0]) == 4:
-        if max(hand[:,0]) == 14:
-            return ROYAL_FLUSH
+class Hand(object):
+    '''
+    A hand as a numpy array is
+    [[number, suit]
+     ...
+     [number, suit]]
+
+    Member variables:
+     - hand - the numpy array
+     - rank - the type of hand
+     - ordering - the list of integers used to distinguish between
+                  hands of the same rank
+    '''
+    def __init__(self, hand):
+        self.hand = hand
+        self.rank = None
+        self.ordering = []
+        self._classify()
+
+    def __str__(self):
+        return 'Hand: {}, {}.'.format(self.rank, self.ordering)
+
+    def __repr__(self):
+        return self.__str__() + '\n{}'.format(self.hand)
+
+    def __lt__(self, other):
+        if self.rank == other.rank:
+            log.debug('comparing ordering: {}, {}'.format(self.ordering, other.ordering))
+            for o1, o2 in zip(self.ordering, other.ordering):
+                log.debug(o1, o2)
+                if o1 < o2:
+                    log.debug('Returning True')
+                    return True
+                elif o1 > o2:
+                    return False
+        return self.rank < other.rank
+
+    def __eq__(self, other):
+        return self.rank == other.rank and self.ordering == other.ordering
+
+    def flush(self):
+        return len(set(self.hand[:,1])) == 1
+
+    def straight_flush(self):
+        return self.flush() and self.straight()
+
+    def straight(self):
+        numbers = self.hand[:,0]
+        return max(numbers) - min(numbers) == 4 and len(set(numbers)) == 5
+
+    def royal_flush(self):
+        return self.straight_flush() and max(self.hand[:,0]) == 14
+
+    def _classify_groups(self):
+        groups = collections.Counter()
+        order = []
+        for i in range(5):
+            groups[self.hand[i,0]] += 1
+        for i in range(4,0,-1):
+            for card in range(14,1,-1):
+                try:
+                    if groups[card] == i:
+                        order.append(card)
+                except KeyError:
+                    pass
+        self.ordering = order
+        log.debug('Groups: {}'.format(groups))
+        if len(groups) == 2:
+            if set(groups.values()) == set([1,4]):
+                self.rank = FOUR
+            elif set(groups.values()) == set([2,3]):
+                self.rank = FULL_HOUSE
+        elif len(groups) == 3:
+            if set(groups.values()) == set([2,2,1]):
+                self.rank = TWO_PAIR
+            elif set(groups.values()) == set([3,1,1]):
+                self.rank = THREE
+        elif len(groups) == 4:
+            self.rank = PAIR
         else:
-            return STRAIGHT_FLUSH
-    else:
-        return FLUSH
+            self.rank = HIGH
 
-def classify_groups(hand):
-    cards = defaultdict(list)
-    for card in hand:
-        print('Card is %s' % card)
-        cards[card[1]].append(card[0])
-    print('Classifying groups for hand %s' % hand)
-    print(cards)
-    best = None
-    second = None
-    for suit in cards.itervalues():
-        if len(suit) == 4:
-            best = FOUR, max(suit)
-        elif len(suit) == 3:
-            max_suit = len(suit)
-            max_num = max(suit)
-        elif len(suit) > sec_suit
+    def _classify_flush(self):
+        if self.royal_flush():
+            self.rank = ROYAL_FLUSH
+        elif self.straight_flush():
+            self.rank = STRAIGHT_FLUSH
+        else:
+            self.rank = FLUSH
+        self.ordering = list(reversed(sorted(self.hand[:,0])))
 
-def classify(hand):
-    if len(set(hand[:,1])) == 1:
-        return classify_flush(hand)
-    else:
-        return classify_groups(hand)
+    def _classify(self):
+        '''
+        Set rank and ordering according to self.hand.
+        '''
+        if self.flush():
+            self._classify_flush()
+        elif self.straight():
+            self.rank = STRAIGHT
+            self.ordering = list(reversed(sorted(self.hand[:,0])))
+        else:
+            self._classify_groups()
+
 
 def read_hand(strings):
     hand = numpy.zeros([5,2])
@@ -74,8 +148,7 @@ def read_hand(strings):
         suit = SUITS[item[1]]
         hand[i, 0] = num
         hand[i, 1] = suit
-    # sort by card number
-    return numpy.sort(hand, axis=0)
+    return Hand(hand)
 
 
 def load_hands():
@@ -90,11 +163,29 @@ def load_hands():
 
 hands = load_hands()
 
-print(hands[0])
-print(len(hands))
+test_hands = [[3,HEARTS,4,SPADES,6,SPADES,10,SPADES,12,CLUBS],
+              [9,HEARTS,9,DIAMONDS,4,HEARTS,5,HEARTS,6,HEARTS],
+              [9,HEARTS,9,DIAMONDS,6,SPADES,5,HEARTS,6,HEARTS],
+              [9,HEARTS,9,DIAMONDS,9,SPADES,5,HEARTS,6,HEARTS],
+              [2,SPADES,3,HEARTS,4,HEARTS,5,HEARTS,6,HEARTS],
+              [8,HEARTS,3,HEARTS,4,HEARTS,5,HEARTS,6,HEARTS],
+              [8,HEARTS,8,SPADES,4,HEARTS,4,CLUBS,8,DIAMONDS],
+              [8,HEARTS,8,SPADES,4,HEARTS,8,CLUBS,8,DIAMONDS],
+              [2,HEARTS,3,HEARTS,4,HEARTS,5,HEARTS,6,HEARTS],
+              [14,HEARTS,13,HEARTS,10,HEARTS,11,HEARTS,12,HEARTS]]
 
-hand = [2,HEARTS,3,HEARTS,4,HEARTS,5,HEARTS,6,HEARTS]
-hand = numpy.array(hand).reshape(5,2)
-print hand
-print(classify(hand))
-print(classify(hands[0][0]))
+def test():
+    for i, th in enumerate(test_hands):
+        hand = numpy.array(th).reshape(5,2)
+        h = Hand(hand)
+        log.debug('Hand {}: {} {}'.format(i, h.rank, h.ordering))
+
+count = 0
+
+for h1, h2 in hands:
+    log.debug(h1, h2)
+    assert(h1 != h2)
+    if h1 > h2:
+        count += 1
+
+print(count)
