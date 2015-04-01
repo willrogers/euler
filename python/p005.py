@@ -2,7 +2,6 @@
 # of the numbers from 1 to 20?
 import sys
 
-# Get the number to test from the command-line argument.
 MAX_NO = 20
 
 def check_divis(n):
@@ -19,5 +18,5 @@ while(True):
         break
     latest += 1
 
-print latest * MAX_NO
+print(latest * MAX_NO)
 

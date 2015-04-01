@@ -68,16 +68,6 @@ def factors(n):
     return fs
 
 
-def pow(x, n):
-    """
-    Return x to the power n.
-    """
-    total = 1
-    for i in range(1, n + 1):
-        total = x*total
-    return total
-
-
 def is_prime(n):
     """
     Return True if an integer is prime.
@@ -85,7 +75,7 @@ def is_prime(n):
     if n < 2:
         return False
     max = int(math.sqrt(n)) + 1
-    for i in range(2,max):
+    for i in range(2, max):
         if n % i == 0:
             return False
     return True
