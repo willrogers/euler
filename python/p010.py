@@ -32,10 +32,8 @@ def array_cancel():
     a[1] = 0
     for i in range(2, LIMIT):
         if a[i] != 0:
-            count = i * 2
-            while count < LIMIT:
-                a[count] = 0
-                count += i
+            cancel = numpy.arange(i * 2, LIMIT, i)
+            a[cancel] = 0
 
     return numpy.sum(a)
 
