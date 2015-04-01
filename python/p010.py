@@ -30,15 +30,15 @@ def dict_cancel():
 def array_cancel():
     a = numpy.arange(LIMIT)
     a[1] = 0
-    for i in [2] + range(3, LIMIT, 2):
-        count = i * 2
-        while count < LIMIT:
-            a[count] = 0
-            count += i
+    for i in range(2, LIMIT):
+        if a[i] != 0:
+            count = i * 2
+            while count < LIMIT:
+                a[count] = 0
+                count += i
 
-    total = sum(a)
-    return total
+    return numpy.sum(a)
 
 
-print(dict_cancel())
+print(array_cancel())
 
