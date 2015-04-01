@@ -23,8 +23,8 @@ int is_prime(int n) {
 	/* only need to go up to the root of the number */
 	int root = iroot(n);
 
-	int i = 2;
-	for (i; i <= root; i++) {
+	int i;
+	for (i = 2; i <= root; i++) {
 		if (n % i == 0) {
 		return 0;
 		}
