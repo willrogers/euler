@@ -100,15 +100,9 @@ def prime_gen(n):
         x += 2
 
 
-def pentagons():
-    i = 0
-    while True:
-        i += 1
-        yield i * (3 * i - 1) / 2
-
-
 def is_pen(num):
     '''
+    Return whether a number is pentagonal.
     Only the positive solution is valid.
     '''
     n = (1 + math.sqrt(1 + 24 * num)) / 6.0
@@ -122,10 +116,34 @@ def triangles():
         yield i * (i + 1) / 2
 
 
+def squares():
+    start = 0
+    for i in itertools.count(start):
+        yield i * i
+
+
+def pentagons():
+    i = 0
+    while True:
+        i += 1
+        yield i * (3 * i - 1) / 2
+
+
 def hexagons():
     start = 0
     for i in itertools.count(start):
         yield i * (2 * i - 1)
+
+def heptagons():
+    start = 0
+    for i in itertools.count(start):
+        yield (i * (5 * i - 3)) / 2
+
+
+def octagons():
+    start = 0
+    for i in itertools.count(start):
+        yield i * (3 * i - 2)
 
 
 def is_tri(num):
