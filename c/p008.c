@@ -5,7 +5,7 @@
 #define LENGTH 50
 #define TOTAL 1000
 #define SEQ 13
-#define FILENAME "c/p008.txt"
+#define FILENAME "data/p008_bignumber.txt"
 
 int main () {
 	int snum[TOTAL];
