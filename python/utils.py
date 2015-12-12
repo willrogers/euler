@@ -294,13 +294,14 @@ def int_replace_all(n, length, indices, rep):
     replaced = int(''.join(nlist))
     return replaced
 
+
 prime_cache = {}
 def is_prime_cached(n):
     global prime_cache
     try:
         return prime_cache[n]
     except KeyError:
-        p = utils.is_prime(n)
+        p = is_prime(n)
         prime_cache[n] = p
         return p
 

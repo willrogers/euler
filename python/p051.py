@@ -18,7 +18,7 @@ def test_family(number, length, digits):
     primes = []
     for i in range(BASE):
         replaced = utils.int_replace_all(number, length, digits, i)
-        if utils.is_prime(replaced):
+        if utils.is_prime_cached(replaced):
             primes.append(replaced)
         else:
             not_prime += 1
