@@ -277,3 +277,32 @@ def is_bouncy(n):
 
     return not_forward and not_back
 
+
+def int_replace(n, length, indices, rep):
+    nlist = list('{0:0{1}d}'.format(n, length))
+    replist = list('{0:0{1}d}'.format(rep, len(indices)))
+    for i, index in enumerate(indices):
+        nlist[index] = replist[i]
+    replaced = int(''.join(nlist))
+    return replaced
+
+
+def int_replace_all(n, length, indices, rep):
+    nlist = list('{0:0{1}d}'.format(n, length))
+    for i in indices:
+        nlist[i] = str(rep)
+    replaced = int(''.join(nlist))
+    return replaced
+
+prime_cache = {}
+def is_prime_cached(n):
+    global prime_cache
+    try:
+        return prime_cache[n]
+    except KeyError:
+        p = utils.is_prime(n)
+        prime_cache[n] = p
+        return p
+
+
+

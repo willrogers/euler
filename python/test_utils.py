@@ -48,5 +48,36 @@ class TestSequenceFunctions(unittest.TestCase):
             if result != cases[case]:
                 self.fail("is_square failed for %s: it got %s" % (case, result))
 
+
+class TestIntReplace(unittest.TestCase):
+
+    def test_int_replace_for_one_replacement(self):
+        ret = utils.int_replace(100, 3, [1], 2)
+        self.assertEqual(ret, 120)
+
+    def test_int_replace_with_leading_zero_replacements(self):
+        ret = utils.int_replace(100, 3, [0,1], 2)
+        self.assertEqual(ret, 20)
+
+    def test_int_replace_with_no_replacements(self):
+        ret = utils.int_replace(100, 3, [], 2)
+        self.assertEqual(ret, 100)
+
+    def test_int_replace_breaking_case(self):
+        ret = utils.int_replace(100, 3, [1,2], 1)
+        self.assertEqual(ret, 101)
+
+    def test_int_replace_all_for_one_replacement(self):
+        ret = utils.int_replace_all(100, 3, [1], 2)
+        self.assertEqual(ret, 120)
+
+    def test_int_replace_all_for_multiple_replacements(self):
+        ret = utils.int_replace_all(100, 3, [0,1], 2)
+        self.assertEqual(ret, 220)
+
+    def test_int_replace_all_for_no_replacements(self):
+        ret = utils.int_replace_all(100, 3, [], 2)
+        self.assertEqual(ret, 100)
+
 if __name__ == '__main__':
     unittest.main()
