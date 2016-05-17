@@ -15,12 +15,12 @@ def is_square(n):
 def find_min_x(D):
     for x in xrange(2, 10000000):
         xs = x**2
-        target = (xs - 1)/D
-        root = math.sqrt(target)
-        int_root = int(root)
-        if root == int_root:
-            if (xs - D * target) == 1:
-                return x
+        if xs % D == 1:
+            target = (xs - 1)/D
+            root = math.sqrt(target)
+            if root == int(root):
+                if (xs - D * target) == 1:
+                    return x
 
 
 results = {}
