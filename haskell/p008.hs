@@ -1,5 +1,5 @@
 -- The problem
-file = "data/bignumber.txt"
+file = "data/p008_bignumber.txt"
 --longno = 35345246345745745646867891
 longno = 2340200020020030304245040
 
