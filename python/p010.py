@@ -1,7 +1,6 @@
 # Find the sum of all the primes below two million.
 import math
 import utils
-import numpy
 
 LIMIT = 2000000
 
@@ -38,5 +37,9 @@ def array_cancel():
     return numpy.sum(a)
 
 
-print(array_cancel())
+try:
+    import numpy
+    print(array_cancel())
+except ImportError:
+    print(dict_cancel())
 
