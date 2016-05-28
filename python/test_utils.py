@@ -1,5 +1,6 @@
 import unittest
 import utils
+import p062
 
 class TestSequenceFunctions(unittest.TestCase):
 
@@ -78,6 +79,19 @@ class TestIntReplace(unittest.TestCase):
     def test_int_replace_all_for_no_replacements(self):
         ret = utils.int_replace_all(100, 3, [], 2)
         self.assertEqual(ret, 100)
+
+
+class TestPermutations(unittest.TestCase):
+
+    def test_search_for_permutations(self):
+        simple_perms = [12,21]
+        perms = p062.search_for_permutations(simple_perms, 2)
+        self.assertEqual(sorted(perms), simple_perms)
+
+    def test_search_for_permutations_returns_empty_list_for_single_element(self):
+        simple_perms = [12]
+        perms = p062.search_for_permutations(simple_perms, 2)
+        self.assertEqual(sorted(perms), [])
 
 if __name__ == '__main__':
     unittest.main()
