@@ -4,50 +4,67 @@ keylog.txt could be valid login attempts.
 '''
 from collections import deque
 
-FILE = 'data/keylog.txt'
-attempts = []
-with open(FILE) as f:
-    for line in f:
-        attempts.append(line.strip())
 
-print attempts
-#attempts = ['123', '234', '52']
+FILE = 'data/keylog.txt'
+
+
+def load_attempts(filename):
+    attempts = []
+    with open(FILE) as f:
+        for line in f:
+            attempts.append(line.strip())
+    return attempts
+
 
 def valid_attempt(att, pwd):
     da = deque(att)
     c = da.popleft()
     try:
         for ch in pwd:
-            if ch == c: 
+            if ch == c:
                 c = da.popleft()
     except IndexError:
         return True
 
     return False
 
-i = 0 
+
+def valid_attempt2(att, pwd):
+    done = 0
+    next = att[done]
+    for n in pwd:
+        try:
+            if n == next:
+                done += 1
+                next = att[done]
+        except IndexError:
+            return True
+    return False
+
 
 def valid_pass(atts, pwd):
     for att in atts:
-        if not valid_attempt(att, str(pwd)):
+        if not valid_attempt2(att, str(pwd)):
             return False
 
     return True
 
-while True:
-#    print i
-    s = str(i)
-    if '4' in s or '5' in s:
-        continue
 
-    if valid_pass(attempts, str(i)):
-        break
+if __name__ == '__main__':
+    attempts = load_attempts(FILE)
+    all_chars = set()
+    for att in attempts:
+        s = set(att)
+        all_chars.update(s)
+    missing_chars = (set(str(i) for i in range(10))).difference(all_chars)
+    i = 0
+    while True:
+        i += 1
+        s = str(i)
+        if not set(s) == all_chars:
+            continue
+        if valid_pass(attempts, s):
+            break
 
-    i += 1
+    print(i)
 
-print "done"
-print i
-    
-print valid_attempt('123', '1234')
-print valid_attempt('234', '1234')
-    
