@@ -23,14 +23,12 @@ if __name__ == '__main__':
     tot = 0
     cache = {1:1, 89:89}
     for i in xrange(1, LIMIT):
-        ans = i
-        while ans not in (1, 89):
-            if ans in cache:
-                ans = cache[ans]
-            else:
-                ans = next_math(ans)
-        cache[i] = ans
-        if ans == 89:
+        temp = i
+        while temp not in cache:
+            temp = next_math(temp)
+        temp = cache[temp]
+        cache[i] = temp
+        if temp == 89:
             tot += 1
 
     print(tot)
