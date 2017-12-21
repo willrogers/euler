@@ -1,12 +1,13 @@
-
 import Utils
 
--- factorise
--- build divisors
--- create triangle numbers and test
+target = 500
 
-target = 1000
+ndivs :: Integer -> Integer -> Bool
+ndivs x limit = (length (divs x)) < fromIntegral limit
 
-divisors [a] = [1, a]
-divisors f:factors = 
-main = do print $ factor target 
+nd :: Integer -> Bool
+nd x = ndivs x target
+
+main = do
+    let tris = dropWhile (nd) triangle
+    print $ head tris
