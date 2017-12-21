@@ -1,3 +1,4 @@
+
 *.pyc
 *.log
 
@@ -6,3 +7,7 @@ c/*
 
 haskell/*
 !haskell/*.hs
+
+# Vim swap files
+*.swp
+*.swo
