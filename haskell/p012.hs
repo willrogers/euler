@@ -3,11 +3,9 @@ import Utils
 target = 500
 
 ndivs :: Integer -> Integer -> Bool
-ndivs x limit = (length (divs x)) < fromIntegral limit
-
-nd :: Integer -> Bool
-nd x = ndivs x target
+ndivs limit x = (length (divs x)) < fromIntegral limit
 
 main = do
-    let tris = dropWhile (nd) triangle
+    -- (ndivs target) is partial function application
+    let tris = dropWhile (ndivs target) triangle
     print $ head tris

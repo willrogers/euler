@@ -7,7 +7,9 @@ factor' :: Integer -> [Integer] -> Integer -> [Integer]
 factor' 1 factors _ = factors
 factor' 2 factors _ = 2:factors
 factor' n factors count
-    | (fromIntegral count :: Double) > ((fromIntegral n :: Double) / 2) = n:factors -- prime so add to the list
+    -- count is bigger than n/2: we have failed to factorise n so
+    -- n is prime and needs to be included in the list of factors
+    | (fromIntegral count :: Double) > ((fromIntegral n :: Double) / 2) = n:factors
     | (n `mod` count == 0) = factor' d (count:factors) 2
     | otherwise = factor' n factors (count + 1)
     where d = n `div` count
