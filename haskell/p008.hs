@@ -1,7 +1,5 @@
 -- The problem
 file = "data/p008_bignumber.txt"
---longno = 35345246345745745646867891
-longno = 2340200020020030304245040
 
 
 bigdig :: Integer -> Integer -> Integer
@@ -30,9 +28,8 @@ maxmult _ 0 = 0
 maxmult n big = max (nmult n big) (maxmult n (big `div` 10))
 
 remNewLine [] = []
--- remNewLine (x:xs) = if x == '\n' then remNewLine xs else x: (remNewLine xs)
 remNewLine xs = [ x | x <- xs, x /= '\n' ]
-            
+
 
 main = do fileString <- readFile file
           let ifile = (read (remNewLine fileString)) :: Integer

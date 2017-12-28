@@ -13,4 +13,4 @@ paths size = paths' 0 0 size
 npaths num = [ paths n | n <- [1..num] ]
 
 main = do print $ paths gridSize
-          print  $ npaths 14
+          print $ npaths 14

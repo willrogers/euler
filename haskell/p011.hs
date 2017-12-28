@@ -1,4 +1,4 @@
-filename = "../data/grid.txt"
+filename = "data/grid.txt"
 
 intify :: [[Char]] -> [Int]
 intify nums = [read x::Int | x <- nums]

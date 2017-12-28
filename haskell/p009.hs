@@ -1,4 +1,4 @@
-import Data.List 
+import Data.List
 
 squares = [x * x | x <- [1..1000]]
 

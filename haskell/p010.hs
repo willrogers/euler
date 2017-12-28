@@ -1,4 +1,3 @@
-
 import Utils
 
 target = 2000000

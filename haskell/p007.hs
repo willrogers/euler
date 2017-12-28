@@ -1,4 +1,3 @@
-
 import Utils
 
 primes n count target = if count == target then n - 1
