@@ -5,7 +5,7 @@ keylog.txt could be valid login attempts.
 import itertools
 
 
-FILE = 'data/keylog.txt'
+FILE = 'data/p079_keylog.txt'
 
 
 def load_attempts(filename):

@@ -5,7 +5,7 @@ it by its position in the list to get an overall score.
 
 from utils import from_file
 
-content  = from_file("data/names.txt")
+content  = from_file("data/p022_names.txt")
 
 values = {}
 for i in range(26):

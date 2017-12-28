@@ -1,7 +1,6 @@
-import Data.Text
-import Data.List 
+import Data.List
 
-file = "data/names.txt"
+file = "data/p022_names.txt"
 
 alpha = ['A'..'Z']
 charVal c =  case (elemIndex c alpha) of 
